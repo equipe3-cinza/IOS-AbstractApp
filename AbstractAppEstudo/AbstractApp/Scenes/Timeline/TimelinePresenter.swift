@@ -7,11 +7,17 @@
 
 import Foundation
 
+protocol TimelineViewControllerProtocol: AnyObject {
+    func showLoading()
+    func showError()
+    func showContent(posts: [Post])
+}
+
 class TimelinePresenter {
-    private weak var viewController: TimelineViewController?
+    private weak var viewController: TimelineViewControllerProtocol?
     private let router: TimelineRouter
     
-    init(viewController: TimelineViewController?, router: TimelineRouter) {
+    init(viewController: TimelineViewControllerProtocol?, router: TimelineRouter) {
         self.viewController = viewController
         self.router = router
     }
@@ -19,6 +25,14 @@ class TimelinePresenter {
 
 extension TimelinePresenter {
     func startLoading() {
-        print("Carregamento iniciado...")
+        viewController?.showLoading()
+    }
+    
+    func handleError() {
+        viewController?.showError()
+    }
+    
+    func handleSuccess(posts: [Post]) {
+        viewController?.showContent(posts: posts)
     }
 }

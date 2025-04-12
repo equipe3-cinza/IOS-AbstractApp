@@ -22,12 +22,14 @@ class TimelineInteractor {
 extension TimelineInteractor {
     func loadTimeline() {
         presenter.startLoading()
-        service.fetchTimeline { result in
+        service.fetchTimeline { [weak self] result in
+            guard let self = self else { return }
+            
             switch(result) {
             case .success(let posts):
-                print(posts)
-            case .failure(let error):
-                print(error)
+                self.presenter.handleSuccess(posts: posts)
+            case .failure:
+                self.presenter.handleError()
             }
         }
     }

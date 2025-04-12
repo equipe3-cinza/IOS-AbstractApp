@@ -40,14 +40,23 @@ class TimelineLoadingView: UIView {
 extension TimelineLoadingView: ViewCodable {
     func buildViewHierarchy() {
         addSubview(loadingLabel)
-        didAddSubview(loadingIndicator)
+        addSubview(loadingIndicator)
     }
     
     func buildViewConstraints() {
+        loadingIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
         
+        loadingLabel.snp.makeConstraints { make in
+            make.top.equalTo(loadingIndicator.snp.bottom).offset(12)
+            make.centerX.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
     }
     
     func additionalConfig() {
-        self.backgroundColor = .gray
+        self.backgroundColor = .white
     }
 }
+

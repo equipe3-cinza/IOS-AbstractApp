@@ -18,6 +18,7 @@ class TimelineViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
         initViper()
     }
     
@@ -26,10 +27,34 @@ class TimelineViewController: UIViewController {
         interactor?.loadTimeline()
     }
     
+    private func setupView() {
+        timelineView.delegate = self
+    }
+    
     private func initViper() {
         let service = TimelineService()
         let router = TimelineRouter(viewController: self)
         let presenter = TimelinePresenter(viewController: self, router: router)
         interactor = TimelineInteractor(service: service, presenter: presenter)
+    }
+}
+
+extension TimelineViewController: TimelineViewDelegate {
+    func timelineViewDidTapRetry() {
+        interactor?.loadTimeline()
+    }
+}
+
+extension TimelineViewController: TimelineViewControllerProtocol {
+    func showLoading() {
+        timelineView.showLoading()
+    }
+    
+    func showError() {
+        timelineView.showError()
+    }
+    
+    func showContent(posts: [Post]) {
+        timelineView.showContent(posts: posts)
     }
 }

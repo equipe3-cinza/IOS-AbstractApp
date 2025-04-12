@@ -31,6 +31,7 @@
 		5CBF08B62D8E2F830085E6D7 /* AbstractAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBF08B52D8E2F830085E6D7 /* AbstractAppUITestsLaunchTests.swift */; };
 		A103E4052DAACDE900BCDABE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A103E4042DAACDE900BCDABE /* User.swift */; };
 		A103E4072DAACEA000BCDABE /* EditProfileViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A103E4062DAACE9C00BCDABE /* EditProfileViewControllerDelegate.swift */; };
+		A103E4092DAADC5F00BCDABE /* TimelineErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A103E4082DAADC5800BCDABE /* TimelineErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		5CBF08C72D8E35E50085E6D7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A103E4042DAACDE900BCDABE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = SOURCE_ROOT; };
 		A103E4062DAACE9C00BCDABE /* EditProfileViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewControllerDelegate.swift; sourceTree = "<group>"; };
+		A103E4082DAADC5800BCDABE /* TimelineErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 		5C9C68CF2DA15C3400854FFC /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				A103E4082DAADC5800BCDABE /* TimelineErrorView.swift */,
 				5C9C68D02DA15C6600854FFC /* TimelineViewController.swift */,
 				5C9C68D22DA15CEC00854FFC /* TimelineInteractor.swift */,
 				5C9C68D42DA15D0200854FFC /* TimelinePresenter.swift */,
@@ -405,6 +408,7 @@
 				5CBF08952D8E2F800085E6D7 /* SceneDelegate.swift in Sources */,
 				5C9C68D32DA15CEC00854FFC /* TimelineInteractor.swift in Sources */,
 				5C9C68E22DA173BF00854FFC /* TimelineLoadingView.swift in Sources */,
+				A103E4092DAADC5F00BCDABE /* TimelineErrorView.swift in Sources */,
 				5C9C68D72DA15D1500854FFC /* TimeLineRouter.swift in Sources */,
 				5C9C68D92DA15D3300854FFC /* TimelineService.swift in Sources */,
 				5C9C68D12DA15C6600854FFC /* TimelineViewController.swift in Sources */,

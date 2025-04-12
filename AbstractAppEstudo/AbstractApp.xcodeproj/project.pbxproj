@@ -29,6 +29,8 @@
 		5CBF08AA2D8E2F830085E6D7 /* AbstractAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBF08A92D8E2F830085E6D7 /* AbstractAppTests.swift */; };
 		5CBF08B42D8E2F830085E6D7 /* AbstractAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBF08B32D8E2F830085E6D7 /* AbstractAppUITests.swift */; };
 		5CBF08B62D8E2F830085E6D7 /* AbstractAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBF08B52D8E2F830085E6D7 /* AbstractAppUITestsLaunchTests.swift */; };
+		A103E4052DAACDE900BCDABE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A103E4042DAACDE900BCDABE /* User.swift */; };
+		A103E4072DAACEA000BCDABE /* EditProfileViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A103E4062DAACE9C00BCDABE /* EditProfileViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		5CBF08B32D8E2F830085E6D7 /* AbstractAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractAppUITests.swift; sourceTree = "<group>"; };
 		5CBF08B52D8E2F830085E6D7 /* AbstractAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5CBF08C72D8E35E50085E6D7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A103E4042DAACDE900BCDABE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = SOURCE_ROOT; };
+		A103E4062DAACE9C00BCDABE /* EditProfileViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 		5C36D43B2DA094A000C36BDA /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				A103E4062DAACE9C00BCDABE /* EditProfileViewControllerDelegate.swift */,
 				5C36D43C2DA0955500C36BDA /* ProfileViewController.swift */,
 			);
 			path = Profile;
@@ -140,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				5C9C68DD2DA16A0A00854FFC /* Post.swift */,
+				A103E4042DAACDE900BCDABE /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -386,9 +392,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CBF08972D8E2F800085E6D7 /* LoginViewController.swift in Sources */,
+				A103E4072DAACEA000BCDABE /* EditProfileViewControllerDelegate.swift in Sources */,
 				5C9C68D52DA15D0200854FFC /* TimelinePresenter.swift in Sources */,
 				5CBF08932D8E2F800085E6D7 /* AppDelegate.swift in Sources */,
 				5C9C68DE2DA16A0A00854FFC /* Post.swift in Sources */,
+				A103E4052DAACDE900BCDABE /* User.swift in Sources */,
 				5C9C68E02DA16B5C00854FFC /* ServiceManager.swift in Sources */,
 				5C9C68E42DA177E900854FFC /* ViewCodable.swift in Sources */,
 				5C9C68CE2DA1522A00854FFC /* StoreManager.swift in Sources */,

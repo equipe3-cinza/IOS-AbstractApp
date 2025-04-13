@@ -20,7 +20,6 @@ class ServiceManager {
         case patch = "PATCH"
     }
 
-    // MARK: - Generic Request
     static func request<T: Decodable, U: Encodable>(
         urlString: String,
         method: HTTPMethod,

@@ -35,4 +35,8 @@ extension TimelinePresenter {
     func handleSuccess(posts: [Post]) {
         viewController?.showContent(posts: posts)
     }
+    
+    func didSelectPost(_ post: Post) {
+        router.navigateToPostDetails(post: post)
+    }
 }

@@ -10,7 +10,6 @@ import SnapKit
 
 class TimelineLoadingView: UIView {
     
-    // MARK: - Views
     private let loadingLabel: UILabel = {
         let label = UILabel()
         label.text = "Carregando..."
@@ -26,7 +25,6 @@ class TimelineLoadingView: UIView {
         return indicator
     }()
     
-    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         buildLayout()

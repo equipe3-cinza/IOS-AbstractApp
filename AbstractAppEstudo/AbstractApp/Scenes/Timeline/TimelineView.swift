@@ -9,15 +9,14 @@ import UIKit
 
 protocol TimelineViewDelegate: AnyObject {
     func timelineViewDidTapRetry()
+    func timelineViewDidSelectPost(_ post: Post)
 }
 
 class TimelineView: UIView {
     
-    // MARK: - Properties
     weak var delegate: TimelineViewDelegate?
     private var posts: [Post] = []
     
-    // MARK: - Views
     private lazy var tableView: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "PostCell")
@@ -40,7 +39,6 @@ class TimelineView: UIView {
         return view
     }()
     
-    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         buildLayout()
@@ -121,5 +119,11 @@ extension TimelineView: UITableViewDataSource, UITableViewDelegate {
         cell.contentConfiguration = content
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let post = posts[indexPath.row]
+        delegate?.timelineViewDidSelectPost(post)
     }
 }

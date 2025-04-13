@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class TimelineRouter {
     
@@ -13,5 +14,10 @@ class TimelineRouter {
     
     init(viewController: TimelineViewController?) {
         self.viewController = viewController
+    }
+    
+    func navigateToPostDetails(post: Post) {
+        let postDetailsVC = PostDetailsViewController(post: post)
+        viewController?.navigationController?.pushViewController(postDetailsVC, animated: true)
     }
 }

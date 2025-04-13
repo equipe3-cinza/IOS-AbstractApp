@@ -28,6 +28,7 @@ class TimelineViewController: UIViewController {
     }
     
     private func setupView() {
+        title = "Timeline"
         timelineView.delegate = self
     }
     
@@ -42,6 +43,11 @@ class TimelineViewController: UIViewController {
 extension TimelineViewController: TimelineViewDelegate {
     func timelineViewDidTapRetry() {
         interactor?.loadTimeline()
+    }
+    
+    func timelineViewDidSelectPost(_ post: Post) {
+        let router = TimelineRouter(viewController: self)
+        router.navigateToPostDetails(post: post)
     }
 }
 

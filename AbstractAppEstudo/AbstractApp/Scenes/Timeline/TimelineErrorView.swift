@@ -33,7 +33,6 @@ class TimelineErrorView: UIView {
         return button
     }()
     
-    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         buildLayout()
@@ -43,7 +42,6 @@ class TimelineErrorView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Actions
     @objc private func handleRetry() {
         delegate?.didTapRetry()
     }

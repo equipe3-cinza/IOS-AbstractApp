@@ -27,6 +27,16 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         loadUserData()
+        
+        // Add logout button to navigation bar
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "rectangle.portrait.and.arrow.right"),
+            style: .plain,
+            target: self,
+            action: #selector(handleLogoff)
+        )
+        
+        title = "Profile"
     }
     
     private func setupUI() {
@@ -57,9 +67,17 @@ class ProfileViewController: UIViewController {
         phoneLabel.text = user.phone
     }
     
-    @IBAction func handleLogoff(_ sender: Any) {
+    @objc func handleLogoff(_ sender: Any) {
         StoreManager.shared.remove(forKey: "logged")
-        self.dismiss(animated: true)
+        
+        // Present login screen
+        if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
+           let window = sceneDelegate.window {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginVC = storyboard.instantiateViewController(withIdentifier: "BYZ-38-t0r")
+            window.rootViewController = loginVC
+            window.makeKeyAndVisible()
+        }
     }
     
     @IBAction func handleEdit(_ sender: Any) {

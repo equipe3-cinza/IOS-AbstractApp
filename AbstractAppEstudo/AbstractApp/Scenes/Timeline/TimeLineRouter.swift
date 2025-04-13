@@ -5,7 +5,7 @@
 //  Created by Silvano Maneck Malfatti on 05/04/25.
 //
 
-import Foundation
+//import Foundation
 import UIKit
 
 class TimelineRouter {

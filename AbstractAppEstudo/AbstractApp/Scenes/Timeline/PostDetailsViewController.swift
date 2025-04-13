@@ -2,10 +2,12 @@ import UIKit
 
 class PostDetailsViewController: UIViewController {
     
+    // MARK: - Properties
     private var post: Post
     private var interactor: PostDetailsInteractor?
     private var postDetailsView: PostDetailsView
     
+    // MARK: - Initialization
     init(post: Post) {
         self.post = post
         self.postDetailsView = PostDetailsView()
@@ -16,6 +18,7 @@ class PostDetailsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
     override func loadView() {
         self.view = postDetailsView
     }
@@ -26,6 +29,7 @@ class PostDetailsViewController: UIViewController {
         initViper()
     }
     
+    // MARK: - Setup
     private func setupView() {
         title = "Post Details"
         postDetailsView.configure(with: post)

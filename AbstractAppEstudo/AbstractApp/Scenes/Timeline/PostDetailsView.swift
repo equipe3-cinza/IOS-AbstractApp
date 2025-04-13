@@ -3,6 +3,7 @@ import SnapKit
 
 class PostDetailsView: UIView {
     
+    // MARK: - Views
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = false
@@ -31,6 +32,7 @@ class PostDetailsView: UIView {
         return label
     }()
     
+    // MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         buildLayout()
@@ -40,6 +42,7 @@ class PostDetailsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Configuration
     func configure(with post: Post) {
         titleLabel.text = post.title
         bodyLabel.text = post.body

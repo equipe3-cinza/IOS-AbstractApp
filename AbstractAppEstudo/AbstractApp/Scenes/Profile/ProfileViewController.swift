@@ -74,9 +74,15 @@ class ProfileViewController: UIViewController {
         if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
            let window = sceneDelegate.window {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let loginVC = storyboard.instantiateViewController(withIdentifier: "BYZ-38-t0r")
+            let loginVC = storyboard.instantiateInitialViewController()
             window.rootViewController = loginVC
-            window.makeKeyAndVisible()
+            
+            // Add animation for smooth transition
+            UIView.transition(with: window,
+                            duration: 0.3,
+                            options: .transitionCrossDissolve,
+                            animations: nil,
+                            completion: nil)
         }
     }
     

@@ -14,6 +14,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var switchLogin: UISwitch!
     @IBOutlet weak var button: UIButton!
     
+    // Hardcoded credentials
+    private let validEmail = "ufg"
+    private let validPassword = "1234"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("ViewController carrega e pronta para o uso")
@@ -30,7 +34,7 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if switchLogin.isOn {
-            presentProfile()
+            navigateToMainApp()
         }
     }
     
@@ -40,40 +44,67 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func handleLogin(_ sender: UIButton) {
-        if let login = loginTextField.text, let password = paswordTextField.text {
-            if (!login.isEmpty && !password.isEmpty) {
-                presentProfile()
+        guard let email = loginTextField.text,
+              let password = paswordTextField.text,
+              !email.isEmpty,
+              !password.isEmpty else {
+            showAlert(message: "Please enter email and password")
+            return
+        }
+        
+        if email == validEmail && password == validPassword {
+            if switchLogin.isOn {
+                StoreManager.shared.save("true", forKey: "logged")
             }
+            navigateToMainApp()
+        } else {
+            showAlert(message: "Invalid credentials")
         }
     }
     
     @IBAction func handleSwitch(_ sender: Any) {
-        if (switchLogin.isOn) {
-            StoreManager.shared.save("true", forKey: "logged")
-        } else {
+        if (!switchLogin.isOn) {
             StoreManager.shared.remove(forKey: "logged")
         }
     }
     
-    func presentProfile() {
-        let profileViewController = storyboard?.instantiateViewController(identifier: "profile")
-        profileViewController?.modalPresentationStyle = .fullScreen
-        profileViewController?.modalTransitionStyle = .coverVertical
-        self.present(profileViewController!, animated: true)
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print("View sera removida em breve")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print("View já não é mais visível ao usuário")
+    private func navigateToMainApp() {
+        if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
+           let window = sceneDelegate.window {
+            
+            // Create Timeline tab
+            let timelineVC = TimelineViewController()
+            let timelineNav = UINavigationController(rootViewController: timelineVC)
+            timelineNav.tabBarItem = UITabBarItem(title: "Timeline", image: UIImage(systemName: "list.bullet"), tag: 0)
+            
+            // Create Profile tab
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let profileVC = storyboard.instantiateViewController(withIdentifier: "profile") as! ProfileViewController
+            let profileNav = UINavigationController(rootViewController: profileVC)
+            profileNav.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
+            
+            // Create Tab Bar Controller
+            let tabBarController = UITabBarController()
+            tabBarController.viewControllers = [timelineNav, profileNav]
+            
+            // Set as root and animate transition
+            window.rootViewController = tabBarController
+            UIView.transition(with: window,
+                            duration: 0.3,
+                            options: .transitionCrossDissolve,
+                            animations: nil,
+                            completion: nil)
+        }
     }
 }
 
-extension LoginViewController: UITextFieldDelegate{
+extension LoginViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.3) {

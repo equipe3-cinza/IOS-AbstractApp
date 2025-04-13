@@ -28,12 +28,14 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        switchLogin.isOn = StoreManager.shared.exists(forKey: "logged")
+        let isAutoLoginEnabled = StoreManager.shared.get(forKey: "logged") == "true"
+        switchLogin.isOn = isAutoLoginEnabled
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if switchLogin.isOn {
+        let isAutoLoginEnabled = StoreManager.shared.get(forKey: "logged") == "true"
+        if isAutoLoginEnabled {
             navigateToMainApp()
         }
     }

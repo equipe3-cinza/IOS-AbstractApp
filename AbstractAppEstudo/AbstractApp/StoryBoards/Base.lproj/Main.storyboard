@@ -116,23 +116,8 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TLO-fw-ne1">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle.portrait.and.arrow.right.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="o1J-Vs-97Z">
-                                                        <rect key="frame" x="325" y="50" width="30" height="30"/>
-                                                        <gestureRecognizers/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="30" id="RfH-qs-ifO"/>
-                                                            <constraint firstAttribute="height" constant="30" id="daq-1k-KE9"/>
-                                                        </constraints>
-                                                        <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="TZP-JI-wzC" appends="YES" id="fjn-gx-Pen"/>
-                                                        </connections>
-                                                    </imageView>
-                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="o1J-Vs-97Z" firstAttribute="top" secondItem="TLO-fw-ne1" secondAttribute="top" constant="50" id="gVD-oq-R6R"/>
-                                                    <constraint firstAttribute="trailing" secondItem="o1J-Vs-97Z" secondAttribute="trailing" constant="20" id="gkR-X6-8aQ"/>
                                                     <constraint firstAttribute="height" constant="120" id="mtU-U4-Lqp"/>
                                                 </constraints>
                                             </view>
@@ -308,7 +293,6 @@
         <image name="Image" width="600" height="600"/>
         <image name="logo_circular" width="1024" height="1024"/>
         <image name="person.circle" catalog="system" width="128" height="123"/>
-        <image name="rectangle.portrait.and.arrow.right.fill" catalog="system" width="128" height="109"/>
         <image name="ufg" width="168" height="240"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -14,23 +14,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        // Create Timeline tab
-        let timelineVC = TimelineViewController()
-        let timelineNav = UINavigationController(rootViewController: timelineVC)
-        timelineNav.tabBarItem = UITabBarItem(title: "Timeline", image: UIImage(systemName: "list.bullet"), tag: 0)
-        
-        // Create Profile tab
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let profileVC = storyboard.instantiateViewController(withIdentifier: "profile") as! ProfileViewController
-        let profileNav = UINavigationController(rootViewController: profileVC)
-        profileNav.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
-        
-        // Create Tab Bar Controller
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [timelineNav, profileNav]
-        
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = tabBarController
+        
+        let isLoggedIn = StoreManager.shared.get(forKey: "logged") == "true"
+        
+        if isLoggedIn {
+            // Create Timeline tab
+            let timelineVC = TimelineViewController()
+            let timelineNav = UINavigationController(rootViewController: timelineVC)
+            timelineNav.tabBarItem = UITabBarItem(title: "Timeline", image: UIImage(systemName: "list.bullet"), tag: 0)
+            
+            // Create Profile tab
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let profileVC = storyboard.instantiateViewController(withIdentifier: "profile") as! ProfileViewController
+            let profileNav = UINavigationController(rootViewController: profileVC)
+            profileNav.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
+            
+            // Create Tab Bar Controller
+            let tabBarController = UITabBarController()
+            tabBarController.viewControllers = [timelineNav, profileNav]
+            window?.rootViewController = tabBarController
+        } else {
+            // Show login screen
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let loginVC = storyboard.instantiateInitialViewController() {
+                window?.rootViewController = loginVC
+            }
+        }
+        
         window?.makeKeyAndVisible()
     }
 

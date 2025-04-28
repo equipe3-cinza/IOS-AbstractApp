@@ -13,7 +13,7 @@
 - Alan Brilhante Coutinho
 - Arthur Vieira Guimarães
 - Caio Alexandre Oliveira Alves
-- Fabricio da Silva Pires
+- Fabricio da Silva Pires 
 - Lucas Araujo Ribeiro
 - Wilglison Rilniky Oliveira dos Santos
 
